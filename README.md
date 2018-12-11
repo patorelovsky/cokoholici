@@ -1,22 +1,5 @@
-# Projekt z predmetu Softvérové inžinierstvo I
-**Ekonomicka univerzita**  
-**Fakulta hospodrárskej informatiky**
-
-**Autor:** Bc. Marián Puškáš, Bc. Patrik Reľovský, Bc. Daniel Petrus  
 **Projekt:** Anonymní čokoholici
 
-## I. Míľnik: 
-* Aplikácia (webová) - obrazovka na pridanie záznamu do DB
-* Aplikácia (webová) - obrazovka na zobrazenie záznamov z DB
-* Zdrojové kódy aplikácie sú umiestnené na GitHub
-* Aplikácia funguje lokálne, DB na Google Cloud
-
- ## II. Míľnik
-* Aplikácia dokáže zobraziť zoznam úkonov a ich cenu
-* Aplikácia dokáže zobraziť poskytovateľov, čokoholikov a služby
-* Aplikácia dokáže zachytiť využitie služby u poskytovateľa čokoholikom (Validácia na platnosť členstva nie je potrebná)
-* Z databázy (nemusí byť cez GUI) je možné zistiť, využitie služieb čokoholikmi. Spolu s celkovou sumou za služby  
-  
 # Front end
 Angular 6 + Angular Material (Material Design components for Angular)  
 ## Development
