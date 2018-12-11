@@ -1,0 +1,63 @@
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="toolbar">
+    <button *ngIf="authenticationService.currentTokenValue" mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 routerLink="/" class="app-name">{{ title }}</h1>
+    <mat-icon *ngIf="authenticationService.currentTokenValue">account_circle</mat-icon>
+    <p> {{ authenticationService.currentTokenValue ? authority : '' }} </p>
+
+    <button *ngIf="authenticationService.currentTokenValue" class="logout" mat-button (click)="logout()">
+      <mat-icon>https</mat-icon>Logout
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      [style.width.px]="mobileQuery.matches ? 'auto' : 250" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/sluzby">
+          <mat-icon>list</mat-icon>Služby
+        </a>
+        <a mat-list-item routerLink="/poskytovatelia" *ngIf="isManazer || isOperator">
+          <mat-icon>list</mat-icon>Poskytovatelia
+        </a>
+        <a mat-list-item routerLink="/clenovia" *ngIf="isManazer || isOperator">
+          <mat-icon>list</mat-icon>Členovia
+        </a>
+        <a mat-list-item routerLink="/poskytnute-sluzby" *ngIf="isManazer || isOperator">
+          <mat-icon>list</mat-icon>Poskytnuté služby
+        </a>
+        <mat-divider *ngIf="isOperator"></mat-divider>
+        <a mat-list-item routerLink="/sluzba-editor" *ngIf="isOperator">
+          <mat-icon>add_circle_outline</mat-icon>Pridať službu
+        </a>
+        <a mat-list-item routerLink="/poskytovatel-editor" *ngIf="isOperator">
+          <mat-icon>add_circle_outline</mat-icon>Pridať poskytovateľa
+        </a>
+        <a mat-list-item routerLink="/clen-editor" *ngIf="isOperator">
+          <mat-icon>add_circle_outline</mat-icon>Pridať člena
+        </a>
+        <a mat-list-item routerLink="/poskytnuta-sluzba-editor" *ngIf="">
+          <mat-icon>add_circle_outline</mat-icon>Pridať poskytnutú službu
+        </a>
+        <mat-divider *ngIf="isPoskytovatel"></mat-divider>
+        <a mat-list-item routerLink="/fakturovat-sluzbu" *ngIf="isPoskytovatel">
+          <mat-icon>add_shopping_cart</mat-icon>Fakturovať službu
+        </a>
+        <mat-divider *ngIf="isManazer || isPoskytovatel"></mat-divider>
+        <a mat-list-item routerLink="/report-manazer" *ngIf="isManazer">
+          <mat-icon>description</mat-icon>Report manažér
+        </a>
+        <a mat-list-item routerLink="/report-poskytovatel" *ngIf="isManazer || isPoskytovatel">
+          <mat-icon>description</mat-icon>Report poskytovateľ
+        </a>
+        <a mat-list-item routerLink="/report-clen" *ngIf="isManazer">
+          <mat-icon>description</mat-icon>Report člen
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content [style.padding.px]="mobileQuery.matches ? '0 10' : '0 50'">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

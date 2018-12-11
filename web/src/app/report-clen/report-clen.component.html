@@ -1,0 +1,69 @@
+<mat-card class="center" *ngIf="showSearch">
+  <mat-card-title>Report člena</mat-card-title>
+  <mat-card-content>
+    <form class="form-clen" [formGroup]="reportClenForm" (ngSubmit)="getReportClenData()">
+      <mat-form-field>
+        <mat-select placeholder="Člen" formControlName="kodClena" required>
+          <mat-option *ngFor="let clen of clenovia" [value]="clen.kodClena">
+            {{ clen.kodClena }} {{ clen.menoClena }}
+          </mat-option>
+        </mat-select>
+        <button matSuffix mat-raised-button type="submit" [disabled]="!reportClenForm.valid">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card class="full" *ngIf="!showSearch">
+  <mat-card-title><button mat-icon-button (click)="goBack()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    Report člena
+    <button class="button-right" mat-icon-button (click)="exportAsXLSX()">
+      <mat-icon>get_app</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-content>
+    <table>
+      <tr>
+        <td><b>Meno člena:</b></td>
+        <td>{{ selectedClen.menoClena }}</td>
+      </tr>
+      <tr>
+        <td><b>Číslo člena:</b></td>
+        <td>{{ selectedClen.kodClena }}</td>
+      </tr>
+      <tr>
+        <td><b>Ulica adresy člena:</b></td>
+        <td>{{ selectedClen.ulicaAdresyClena }}</td>
+      </tr>
+      <tr>
+        <td><b>Mesto adresy člena:</b></td>
+        <td>{{ selectedClen.mestoAdresyClena }}</td>
+      </tr>
+      <tr>
+        <td><b>PSČ adresy člena:</b></td>
+        <td>{{ selectedClen.pscAdresyClena }}</td>
+      </tr>
+    </table>
+    <div class="table-container">
+      <table class="report">
+        <thead>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{col}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataSource">
+            <td *ngFor="let col of columns">
+              {{ row[col] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

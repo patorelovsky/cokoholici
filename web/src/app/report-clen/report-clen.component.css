@@ -1,0 +1,17 @@
+.form-clen {
+  text-align: center;
+  margin: 25px;
+}
+
+.full mat-card-title {
+  display: flex;
+  align-items: center;
+}
+
+.button-right {
+  margin-left: auto;
+}
+
+.full td {
+  padding: 5px;
+}

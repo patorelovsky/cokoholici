@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="cokoholici-xxx_main" target="1.8" />
+      <module name="cokoholici-xxx_test" target="1.8" />
+      <module name="sk.euba.fhi.swi.cokoholici-xxx.main" target="1.8" />
+      <module name="sk.euba.fhi.swi.cokoholici-xxx.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

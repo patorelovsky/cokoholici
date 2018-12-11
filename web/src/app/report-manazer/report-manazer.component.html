@@ -1,0 +1,27 @@
+<mat-card class="full">
+  <mat-card-title>Report manažér
+    <button class="button-right" mat-icon-button (click)="exportAsXLSX()">
+      <mat-icon>get_app</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="table-container">
+      <table class="report">
+        <thead>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{col}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataSource">
+            <td *ngFor="let col of columns">
+              {{ row[col] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

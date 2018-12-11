@@ -1,0 +1,64 @@
+<h2>Zoznam poskytnutých služieb
+  <button class="button-right" mat-icon-button (click)="exportAsXLSX()">
+    <mat-icon>get_app</mat-icon>
+  </button>
+</h2>
+<div>
+  <mat-form-field class="table-container">
+    <input autocomplete="off" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Aktuálny dátum Column -->
+    <ng-container matColumnDef="aktualnyDatum">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Aktuálny dátum </th>
+      <td mat-cell *matCellDef="let poskytnuta_sluzba"> {{ poskytnuta_sluzba.aktualnyDatum | date:'dd-MM-yyyy
+        HH:mm:ss': 'utc+02:00'
+        }}
+      </td>
+    </ng-container>
+    <!-- Dátum poskytnutia Column -->
+    <ng-container matColumnDef="datumPoskytnutia">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Dátum poskytnutia </th>
+      <td mat-cell *matCellDef="let poskytnuta_sluzba"> {{ poskytnuta_sluzba.datumPoskytnutia | date:"dd-MM-yyyy":
+        'utc+04:00' }}
+      </td>
+    </ng-container>
+    <!-- Kód poskytovateľa Column -->
+    <ng-container matColumnDef="kodPoskytovatela">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Kód poskytovateľa </th>
+      <td mat-cell *matCellDef="let poskytnuta_sluzba"> {{ poskytnuta_sluzba.kodPoskytovatela }} </td>
+    </ng-container>
+    <!-- Kód člena Column -->
+    <ng-container matColumnDef="kodClena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Kód člena </th>
+      <td mat-cell *matCellDef="let poskytnuta_sluzba"> {{ poskytnuta_sluzba.kodClena }} </td>
+    </ng-container>
+    <!-- Kód služby Column -->
+    <ng-container matColumnDef="kodSluzby">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Kód služby </th>
+      <td mat-cell *matCellDef="let poskytnuta_sluzba"> {{ poskytnuta_sluzba.kodSluzby }} </td>
+    </ng-container>
+    <!-- Komentár Column -->
+    <ng-container matColumnDef="komentar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Komentár </th>
+      <td mat-cell *matCellDef="let poskytnuta_sluzba"> {{ poskytnuta_sluzba.komentar }} </td>
+    </ng-container>
+    <!-- Upravit Column -->
+    <ng-container matColumnDef="upravit">
+      <th mat-header-cell *matHeaderCellDef> Upraviť </th>
+      <td mat-cell *matCellDef="let poskytnuta_sluzba"><button mat-icon-button (click)="update(poskytnuta_sluzba)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+    </ng-container>
+    <!-- Zmazať Column -->
+    <ng-container matColumnDef="zmazat">
+      <th mat-header-cell *matHeaderCellDef> Zmazať </th>
+      <td mat-cell *matCellDef="let poskytnuta_sluzba"><button mat-icon-button (click)="delete(poskytnuta_sluzba)">
+          <mat-icon>delete_outline</mat-icon>
+        </button></td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20, 40, 80]" showFirstLastButtons></mat-paginator>
+</div>

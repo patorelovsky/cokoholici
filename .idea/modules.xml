@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sk.euba.fhi.swi.cokoholici-xxx.iml" filepath="$PROJECT_DIR$/.idea/modules/sk.euba.fhi.swi.cokoholici-xxx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sk.euba.fhi.swi.cokoholici-xxx.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sk.euba.fhi.swi.cokoholici-xxx.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sk.euba.fhi.swi.cokoholici-xxx.test.iml" filepath="$PROJECT_DIR$/.idea/modules/sk.euba.fhi.swi.cokoholici-xxx.test.iml" />
+    </modules>
+  </component>
+</project>

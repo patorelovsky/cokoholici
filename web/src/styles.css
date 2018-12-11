@@ -1,0 +1,121 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+table.mat-table,
+mat-paginator {
+  width: 100%;
+  min-width: 600px;
+}
+
+div.table-container {
+  overflow-x: auto;
+}
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+mat-card.center {
+  max-width: 500px;
+  margin: 10px auto;
+}
+
+mat-card.full {
+  margin: 10px 0;
+}
+
+table.report {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-color: grey;
+  background: #fff;
+  color: rgba(0, 0, 0, .87);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+table.report thead {
+  background: inherit;
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+table.report thead tr {
+  height: 56px;
+  background: inherit;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+table.report thead tr th {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding-left: 24px;
+  padding: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  text-align: left;
+  border-bottom-color: rgba(0, 0, 0, .12);
+  color: rgba(0, 0, 0, .54);
+  font-size: 12px;
+  font-weight: 500;
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+table.report tbody {
+  background: inherit;
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+table.report tbody tr {
+  height: 48px;
+  background: inherit;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+
+}
+
+table.report tbody tr td {
+  padding-left: 24px;
+  padding: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, .12);
+  color: rgba(0, 0, 0, .87);
+  font-size: 14px;
+  display: table-cell;
+  vertical-align: inherit;
+}

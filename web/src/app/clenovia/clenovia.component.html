@@ -1,0 +1,59 @@
+<h2>Zoznam členov
+  <button class="button-right" mat-icon-button (click)="exportAsXLSX()">
+    <mat-icon>get_app</mat-icon>
+  </button>
+</h2>
+<div class="table-container">
+  <mat-form-field>
+    <input autocomplete="off" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Kod Column -->
+    <ng-container matColumnDef="kodClena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Kód </th>
+      <td mat-cell *matCellDef="let clen"> {{ clen.kodClena }} </td>
+    </ng-container>
+    <!-- Meno Column -->
+    <ng-container matColumnDef="menoClena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Meno </th>
+      <td mat-cell *matCellDef="let clen"> {{ clen.menoClena }} </td>
+    </ng-container>
+    <!-- Ulica adresy Column -->
+    <ng-container matColumnDef="ulicaAdresyClena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ulica adresy </th>
+      <td mat-cell *matCellDef="let clen"> {{ clen.ulicaAdresyClena }} </td>
+    </ng-container>
+    <!-- Mesto adresy Column -->
+    <ng-container matColumnDef="mestoAdresyClena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mesto adresy </th>
+      <td mat-cell *matCellDef="let clen"> {{ clen.mestoAdresyClena }} </td>
+    </ng-container>
+    <!-- PSČ adresy Column -->
+    <ng-container matColumnDef="pscAdresyClena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> PSČ adresy </th>
+      <td mat-cell *matCellDef="let clen"> {{ clen.pscAdresyClena }} </td>
+    </ng-container>
+    <!-- Status Column -->
+    <ng-container matColumnDef="statusClena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let clen"> {{ clen.statusClena ? "Validované" : "Pozastavené členstvo" }} </td>
+    </ng-container>
+    <!-- Upravit Column -->
+    <ng-container matColumnDef="upravit">
+      <th mat-header-cell *matHeaderCellDef> Upraviť </th>
+      <td mat-cell *matCellDef="let clen"><button mat-icon-button (click)="update(clen)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+    </ng-container>
+    <!-- Zmazať Column -->
+    <ng-container matColumnDef="zmazat">
+      <th mat-header-cell *matHeaderCellDef> Zmazať </th>
+      <td mat-cell *matCellDef="let clen"><button mat-icon-button (click)="delete(clen)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20, 40, 80]" showFirstLastButtons></mat-paginator>
+</div>

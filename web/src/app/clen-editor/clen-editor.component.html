@@ -1,0 +1,35 @@
+<mat-card class="center">
+  <mat-card-title> {{ isNew ? 'Pridať nového člena' : 'Upraviť člena' }} </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="clenForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input type="text" autocomplete="off" maxlength="9" placeholder="Kód člena" onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+          matInput formControlName="kodClena" />
+        <mat-error>Prosím vložte 9 miestný číselný kód</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" autocomplete="off" maxlength="20" placeholder="Meno člena" required matInput formControlName="menoClena" />
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" autocomplete="on" placeholder="Ulica adresy a číslo domu člena" matInput required
+          formControlName="ulicaAdresyClena" />
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" autocomplete="on" placeholder="Mesto adresy člena" matInput required formControlName="mestoAdresyClena" />
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" autocomplete="on" maxlength="5" placeholder="PSČ adresy člena" matInput required onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+          formControlName="pscAdresyClena" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Status člena" formControlName="statusClena" required>
+          <mat-option value="true">Validované</mat-option>
+          <mat-option value="false">Pozastavené členstvo</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button type="submit" [disabled]="!clenForm.valid">
+        <mat-icon>save</mat-icon>Uložiť
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

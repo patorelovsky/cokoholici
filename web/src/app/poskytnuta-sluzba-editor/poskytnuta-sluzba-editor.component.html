@@ -1,0 +1,43 @@
+<mat-card class="center">
+  <mat-card-title> {{ isNew ? 'Pridať novú poskytnutú službu' : 'Upraviť poskytnutú službu' }} </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="poskytnutaSluzbaForm" (ngSubmit)="onSubmit()">
+      <mat-form-field id="aktualnyDatum">
+        <input matInput placeholder="Aktuálny dátum:" formControlName="aktualnyDatum" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input autocomplete="off" matInput [matDatepicker]="datumPoskytnutia" placeholder="Dátum poskytnutia:"
+          formControlName="datumPoskytnutia" required>
+        <mat-datepicker-toggle matSuffix [for]="datumPoskytnutia"></mat-datepicker-toggle>
+        <mat-datepicker [touchUi]="mobileQuery.matches" #datumPoskytnutia></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Kód Sluzby" formControlName="kodSluzby" required>
+          <mat-option *ngFor="let sluzba of sluzby" [value]="sluzba.kodSluzby">
+            {{ sluzba.kodSluzby }} {{ sluzba.nazovSluzby }} {{ sluzba.poplatokZaSluzbu | currency:'EUR' }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Kód poskytovatela" formControlName="kodPoskytovatela" required>
+          <mat-option *ngFor="let poskytovatel of poskytovatelia" [value]="poskytovatel.kodPoskytovatela">
+            {{ poskytovatel.kodPoskytovatela }} {{ poskytovatel.menoPoskytovatela }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Kód člena" formControlName="kodClena" required>
+          <mat-option *ngFor="let clen of clenovia" [value]="clen.kodClena">
+            {{ clen.kodClena }} {{ clen.menoClena }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput autocomplete="off" maxlength="255" placeholder="Komentar" formControlName="komentar"></textarea>
+      </mat-form-field>
+      <button mat-raised-button type="submit" [disabled]="!poskytnutaSluzbaForm.valid">
+        <mat-icon>save</mat-icon>Uložiť
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

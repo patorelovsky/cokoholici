@@ -1,0 +1,76 @@
+<mat-card class="center" *ngIf="showSearch">
+  <mat-card-title>Report poskytovateľa</mat-card-title>
+  <mat-card-content>
+    <form class="form-poskytovatel" [formGroup]="reportPoskytovatelForm" (ngSubmit)="getReportPoskytovatelData()">
+      <mat-form-field>
+        <mat-select placeholder="Poskytovateľ" formControlName="kodPoskytovatela" required>
+          <mat-option *ngFor="let poskytovatel of poskytovatelia" [value]="poskytovatel.kodPoskytovatela">
+            {{ poskytovatel.kodPoskytovatela }} {{ poskytovatel.menoPoskytovatela }}
+          </mat-option>
+        </mat-select>
+        <button matSuffix mat-raised-button type="submit" [disabled]="!reportPoskytovatelForm.valid">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card class="full" *ngIf="!showSearch">
+  <mat-card-title><button mat-icon-button (click)="goBack()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>Report poskytovateľ
+    <button class="button-right" mat-icon-button (click)="exportAsXLSX()">
+      <mat-icon>get_app</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-content>
+    <table>
+      <tr>
+        <td><b>Meno poskytovateľa:</b></td>
+        <td>{{ selectedPoskytovatel.menoPoskytovatela }}</td>
+      </tr>
+      <tr>
+        <td><b>Číslo poskytovateľa:</b></td>
+        <td>{{ selectedPoskytovatel.kodPoskytovatela }}</td>
+      </tr>
+      <tr>
+        <td><b>Ulica adresy poskytovateľa:</b></td>
+        <td>{{ selectedPoskytovatel.ulicaAdresyPoskytovatela }}</td>
+      </tr>
+      <tr>
+        <td><b>Mesto adresy poskytovateľa:</b></td>
+        <td>{{ selectedPoskytovatel.mestoAdresyPoskytovatela }}</td>
+      </tr>
+      <tr>
+        <td><b>PSČ adresy poskytovateľa:</b></td>
+        <td>{{ selectedPoskytovatel.pscAdresyPoskytovatela }}</td>
+      </tr>
+      <tr>
+        <td><b>Celkový počet konzultácii:</b></td>
+        <td>{{ dataSource.length }}</td>
+      </tr>
+      <tr>
+        <td><b>Celková suma poplatkov za služby:</b></td>
+        <td>{{ sumPoskytovatel | currency:'EUR' }}</td>
+      </tr>
+    </table>
+    <div class="table-container">
+      <table class="report">
+        <thead>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{col}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataSource">
+            <td *ngFor="let col of columns">
+              {{ row[col] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
